@@ -1,7 +1,7 @@
 import wheel from "./imgs/wheel.png";
 import arrow from "./imgs/arrow.png";
 import coin from "./imgs/coin.png";
-import ticker from "./imgs/ticket.png";
+import ticket from "./imgs/ticket.png";
 
 import "./App.css"
 import "./reset.css"
@@ -73,11 +73,14 @@ function App(){
     <div className="container">
       <div className="objects">
         <div className="coins">
-          <h2 className="coins-text">Coins:</h2>
-          <img src={coin} alt="Coin" className="coin" />
+          <h2 className="object-text">Coins:</h2>
+          <img src={coin} alt="Coin" className="object coin" />
         </div>
 
-        <div className="tickets"></div>
+        <div className="tickets">
+          <h2 className="object-text">Tickets:</h2>
+          <img src={ticket} alt="Ticket" className="object ticket" />
+        </div>
       </div>
       <div className="wheel-container">
         <img className="wheel" 
