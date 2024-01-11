@@ -89,6 +89,11 @@
 
 .animation-bar{
   animation: animation-bar .8s infinite ease-in-out;
+  animation-play-state: running;
+}
+
+.stop{
+  animation-play-state: paused;
 }
 
 @keyframes animation-bar {

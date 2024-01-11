@@ -2,11 +2,14 @@ import wheel from "./imgs/ruleta.png"
 import arrow from "./imgs/central.png"
 import "./App.css"
 import "./reset.css"
-import { useState } from "react"
+import { useRef } from "react"
 
 function App(){
+  const barRef = useRef(null);
 
-  const [len, setLen] = useState(240)
+  const stop = () => {
+    barRef.current.classList.toggle("stop");
+  }
 
   return(
     <div className="container">
@@ -20,11 +23,12 @@ function App(){
       <div className="launch-container">
         <div className="launch-bar animation-bar"
         style={{
-          "--len": `${len}px` 
-        }}></div>
+          "--len": `240px` 
+        }}
+        ref={ barRef }></div>
       </div>
       <div>
-        <button className="launch-button">Launch</button>
+        <button onClick={stop} className="launch-button">Launch</button>
       </div>
     </div>
   )
