@@ -13,7 +13,7 @@ function App(){
 
   const stop = () => {
     barRef.current.classList.add("stop");
-    setPower(barRef.current.offsetWidth * 10);
+    setPower(power + barRef.current.offsetWidth * 10);
   }
 
   const continueWheel = () => {
@@ -27,6 +27,8 @@ function App(){
     const b = values[1];
     const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
     const degrees = ((angle < 0) ? angle + 360 : angle); //obtain the degrees
+
+    console.log(degrees);
 
     //TODO: do validations with the degrees
     }
