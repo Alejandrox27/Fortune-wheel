@@ -18,7 +18,19 @@ function App(){
 
   const continueWheel = () => {
     barRef.current.classList.remove("stop")
-  }
+    const style = window.getComputedStyle(wheelRef.current);
+    const transform = style.getPropertyValue('transform');
+    const matrix = transform.match(/^matrix\((.+)\)$/);
+    
+    const values = matrix[1].split(', ');
+    const a = values[0];
+    const b = values[1];
+    const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+    const degrees = ((angle < 0) ? angle + 360 : angle); //obtain the degrees
+
+    //TODO: do validations with the degrees
+    }
+  
 
   return(
     <div className="container">
@@ -30,7 +42,7 @@ function App(){
           transition: "transform 3s cubic-bezier(0.2,0.8,0.7,0.99)"
         }} 
         onTransitionEnd={continueWheel}
-        src={wheel}
+        src={ wheel }
         ref={ wheelRef }></img>
         <img className="arrow" src={arrow}></img>
       </div>
