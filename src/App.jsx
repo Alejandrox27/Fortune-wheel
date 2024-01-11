@@ -12,18 +12,25 @@ function App(){
   const [power, setPower] = useState(10)
 
   const stop = () => {
-    barRef.current.classList.toggle("stop");
+    barRef.current.classList.add("stop");
     setPower(barRef.current.offsetWidth * 10);
+  }
+
+  const continueWheel = () => {
+    barRef.current.classList.remove("stop")
   }
 
   return(
     <div className="container">
       <div className="wheel-container">
-        <img className="wheel" style={{
+        <img className="wheel" 
+        style={{
           "--power": power,
           transform: `rotate(${power}deg)`,
           transition: "transform 3s cubic-bezier(0.2,0.8,0.7,0.99)"
-        }} src={wheel}
+        }} 
+        onTransitionEnd={continueWheel}
+        src={wheel}
         ref={ wheelRef }></img>
         <img className="arrow" src={arrow}></img>
       </div>
