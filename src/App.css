@@ -1,0 +1,38 @@
+.wheel-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wheel{
+  width: 400px;
+}
+
+.arrow{
+  position: absolute;
+  width: 100px;
+}
+
+.animation{
+  animation: animation-wheel 5s ease-in-out;
+}
+
+@keyframes animation-wheel {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(720deg);
+  }
+}
+
+@media (max-width: 410px) {
+  .wheel{
+    width: 250px;
+  }
+
+  .arrow{
+    width: 60px;
+  }
+}
