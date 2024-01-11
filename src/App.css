@@ -83,10 +83,6 @@
   border-color:#607274;
 }
 
-.animation{
-  animation: animation-wheel 4s ease-in-out;
-}
-
 .animation-bar{
   animation: animation-bar .8s infinite ease-in-out;
   animation-play-state: running;
@@ -98,22 +94,13 @@
 
 @keyframes animation-bar {
   0%{
-    width: 5px;
+    width: 10px;
   }
   50%{
     width: var(--len);
   }
   100%{
-    width: 5px;
-  }
-}
-
-@keyframes animation-wheel {
-  0%{
-    transform: rotate(0deg);
-  }
-  100%{
-    transform: rotate(720deg);
+    width: 10px;
   }
 }
 
