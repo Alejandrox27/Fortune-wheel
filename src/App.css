@@ -83,6 +83,12 @@
   border-color:#607274;
 }
 
+.launch-button[disabled] {
+  background-color: #484949;
+  color: #1b1c1d;
+  border-color: #454646;
+}
+
 .animation-bar{
   animation: animation-bar .8s infinite ease-in-out;
   animation-play-state: running;

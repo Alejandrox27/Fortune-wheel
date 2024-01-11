@@ -7,17 +7,20 @@ import { useState } from "react"
 
 function App(){
   const barRef = useRef(null);
+  const buttonRef = useRef(null);
   const wheelRef = useRef(null);
 
-  const [power, setPower] = useState(10)
+  const [power, setPower] = useState(0)
 
   const stop = () => {
     barRef.current.classList.add("stop");
     setPower(power + barRef.current.offsetWidth * 10);
+    buttonRef.current.setAttribute("disabled", !buttonRef.current.disabled)
   }
 
   const continueWheel = () => {
     barRef.current.classList.remove("stop")
+    buttonRef.current.removeAttribute("disabled", !buttonRef.current.disabled)
     const style = window.getComputedStyle(wheelRef.current);
     const transform = style.getPropertyValue('transform');
     const matrix = transform.match(/^matrix\((.+)\)$/);
@@ -30,7 +33,38 @@ function App(){
 
     console.log(degrees);
 
-    //TODO: do validations with the degrees
+    if(0 <= degrees && degrees <= 44){
+      console.log("Dead ")
+    };
+
+    if(45 <= degrees && degrees <= 89){
+      console.log("+1 coin")
+    };
+
+    if(90 <= degrees && degrees <= 134){
+      console.log("x2 coin and leave")
+    };
+
+    if(135 <= degrees && degrees <= 179){
+      console.log("+8 coins")
+    };
+
+    if(180 <= degrees && degrees <= 224){
+      console.log("Dead")
+    };
+
+    if(225 <= degrees && degrees <= 269){
+      console.log("+5 coins")
+    };
+
+    if(270 <= degrees && degrees <= 314){
+      console.log("x3 coins and leave")
+    };
+
+    if(315 <= degrees && degrees <= 359){
+      console.log("+2 coins")
+    };
+
     }
   
 
@@ -59,7 +93,7 @@ function App(){
         ref={ barRef }></div>
       </div>
       <div>
-        <button onClick={stop} className="launch-button">Launch</button>
+        <button onClick={stop} ref={buttonRef} className="launch-button">Launch</button>
       </div>
     </div>
   )
