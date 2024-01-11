@@ -1,5 +1,8 @@
-import wheel from "./imgs/wheel.png"
-import arrow from "./imgs/arrow.png"
+import wheel from "./imgs/wheel.png";
+import arrow from "./imgs/arrow.png";
+import coin from "./imgs/coin.png";
+import ticker from "./imgs/ticket.png";
+
 import "./App.css"
 import "./reset.css"
 import { useRef } from "react"
@@ -14,7 +17,7 @@ function App(){
 
   const stop = () => {
     barRef.current.classList.add("stop");
-    setPower(power + barRef.current.offsetWidth * 10);
+    setPower(power + barRef.current.offsetWidth * 20);
     buttonRef.current.setAttribute("disabled", !buttonRef.current.disabled)
   }
 
@@ -68,6 +71,14 @@ function App(){
 
   return(
     <div className="container">
+      <div className="objects">
+        <div className="coins">
+          <h2 className="coins-text">Coins:</h2>
+          <img src={coin} alt="Coin" className="coin" />
+        </div>
+
+        <div className="tickets"></div>
+      </div>
       <div className="wheel-container">
         <img className="wheel" 
         style={{
@@ -85,9 +96,6 @@ function App(){
       </div>
       <div className="launch-container">
         <div className="launch-bar animation-bar"
-        style={{
-          "--len": `240px`,
-        }}
         ref={ barRef }></div>
       </div>
       <div>
