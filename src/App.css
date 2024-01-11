@@ -44,7 +44,7 @@
 
 .launch-container{
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   margin-top: 10px;
   border-radius: 90px;
@@ -59,6 +59,7 @@
   height: 20px;
   width: 240px;
   border-radius: 20px;
+  margin-left: 6px;
 }
 
 .launch-button{
@@ -67,15 +68,39 @@
   border: none;
   padding: 10px 20px;
   font-size: 20px;
+  border: 2px solid #607274;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 700;
   color: #FFF;
+  transition: all 0.3s ease;
 
 }
 
+.launch-button:hover{
+  color: #607274;
+  background: none;
+  border-color:#607274;
+}
+
 .animation{
-  animation: animation-wheel 5s ease-in-out;
+  animation: animation-wheel 4s ease-in-out;
+}
+
+.animation-bar{
+  animation: animation-bar .8s infinite ease-in-out;
+}
+
+@keyframes animation-bar {
+  0%{
+    width: 5px;
+  }
+  50%{
+    width: var(--len);
+  }
+  100%{
+    width: 5px;
+  }
 }
 
 @keyframes animation-wheel {
