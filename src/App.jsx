@@ -1,7 +1,7 @@
 import wheel from "./imgs/wheel.png";
 import arrow from "./imgs/arrow.png";
-import coin from "./imgs/coin.png";
-import ticket from "./imgs/ticket.png";
+import coin_img from "./imgs/coin.png";
+import ticket_img from "./imgs/ticket.png";
 
 import "./App.css"
 import "./reset.css"
@@ -15,9 +15,18 @@ function App(){
 
   const [power, setPower] = useState(0)
 
+  const [coins, setCoins] = useState(1);
+  const [ticket, setTicket] = useState(1);
+
+  const coins_list = [];
+  for (let i = 0; i<coins; i++){
+    coins_list.push(<img key={i} src={coin_img} alt="Coin" className="object coin" />)
+  }
+
   const stop = () => {
     barRef.current.classList.add("stop");
     setPower(power + barRef.current.offsetWidth * 20);
+    setTicket(0);
     buttonRef.current.setAttribute("disabled", !buttonRef.current.disabled)
   }
 
@@ -34,39 +43,54 @@ function App(){
     const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
     const degrees = ((angle < 0) ? angle + 360 : angle); //obtain the degrees
 
-    if(0 <= degrees && degrees <= 44){
-      console.log("Dead ")
+    if(0 <= degrees && degrees <= 44 || 180 <= degrees && degrees <= 224){
+      //Loose
+      setTicket(-1);
     };
 
     if(45 <= degrees && degrees <= 89){
-      console.log("+1 coin")
+      //+1 Coin
+      setTicket(1);
+      setCoins(coins + 1);
     };
 
     if(90 <= degrees && degrees <= 134){
-      console.log("x2 coin and leave")
+      // X2 coins
+      setTicket(-1);
+      setCoins(coins * 2);
     };
 
     if(135 <= degrees && degrees <= 179){
-      console.log("+8 coins")
-    };
-
-    if(180 <= degrees && degrees <= 224){
-      console.log("Dead")
+      //+8 coins
+      setTicket(1);
+      setCoins(coins + 8);
     };
 
     if(225 <= degrees && degrees <= 269){
-      console.log("+5 coins")
+      //+5 Coins
+      setTicket(1);
+      setCoins(coins + 5);
     };
 
     if(270 <= degrees && degrees <= 314){
-      console.log("x3 coins and leave")
+      //x3 Coins
+      setTicket(-1);
+      setCoins(coins * 3);
     };
 
     if(315 <= degrees && degrees <= 359){
-      console.log("+2 coins")
+      //+2 Coins
+      setTicket(1);
+      setCoins(coins + 2)
     };
 
-    }
+  }
+
+  const restartGame = () => {
+    setCoins(1);
+    setTicket(1);
+    setFinishText(null);
+  }
   
 
   return(
@@ -74,12 +98,20 @@ function App(){
       <div className="objects">
         <div className="coins">
           <h2 className="object-text">Coins:</h2>
-          <img src={coin} alt="Coin" className="object coin" />
+          <div className="coins-list">
+            {
+              coins_list.map((coin, i) => {
+                return coin;
+              })
+            }
+          </div>
         </div>
 
         <div className="tickets">
           <h2 className="object-text">Tickets:</h2>
-          <img src={ticket} alt="Ticket" className="object ticket" />
+          {
+            ticket > 0 && <img src={ticket_img} alt="Ticket" className="object ticket" />
+          }
         </div>
       </div>
       <div className="wheel-container">
@@ -94,16 +126,28 @@ function App(){
         ref={ wheelRef }></img>
         <img className="arrow" src={arrow}></img>
       </div>
-      <div className="launch-text">
-        <p>Click on "launch"</p>
-      </div>
-      <div className="launch-container">
-        <div className="launch-bar animation-bar"
-        ref={ barRef }></div>
-      </div>
-      <div>
-        <button onClick={stop} ref={buttonRef} className="launch-button">Launch</button>
-      </div>
+      {
+        ticket === -1 ? 
+        <>
+        <h3 className="finish-text">You lost, but you won {coins} coin/s</h3>
+        <button className="button" onClick={restartGame}>Restart</button>
+        </>
+         :
+        <>
+          <div className="launch-text">
+            <p>Click on "launch"</p>
+          </div>
+          <div className="launch-container">
+            <div className="launch-bar animation-bar"
+            ref={ barRef }></div>
+          </div>
+          <div>
+            <button onClick={stop} ref={buttonRef} className="button">Launch</button>
+          </div>
+        </>
+         
+      }
+      
     </div>
   )
 }

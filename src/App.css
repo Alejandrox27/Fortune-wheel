@@ -44,6 +44,11 @@
   margin-left: 20px;
 }
 
+.coins-list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .tickets{
   margin-right: 20px;
 }
@@ -102,7 +107,7 @@
   margin-left: 6px;
 }
 
-.launch-button{
+.button{
   margin-top: 20px;
   background-color: #607274;
   border: none;
@@ -117,16 +122,22 @@
 
 }
 
-.launch-button:hover{
+.button:hover{
   color: #607274;
   background: none;
   border-color:#607274;
 }
 
-.launch-button[disabled] {
+.button[disabled] {
   background-color: #484949;
   color: #1b1c1d;
   border-color: #454646;
+}
+
+.finish-text{
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .animation-bar{
@@ -172,7 +183,7 @@
     padding: 0px;
   }
 
-  .launch-button{
+  .button{
     padding: 5px 15px;
   }
 
@@ -193,6 +204,14 @@
   .object{
     width: 22px;
     height: 22px;
+  }
+
+  .coins-list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .finish-text{
+    font-size: 17px;
   }
 
   .launch-container{
