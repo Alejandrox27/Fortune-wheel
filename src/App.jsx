@@ -1,5 +1,5 @@
-import wheel from "./imgs/ruleta.png"
-import arrow from "./imgs/central.png"
+import wheel from "./imgs/wheel.png"
+import arrow from "./imgs/arrow.png"
 import "./App.css"
 import "./reset.css"
 import { useRef } from "react"
@@ -30,8 +30,6 @@ function App(){
     const b = values[1];
     const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
     const degrees = ((angle < 0) ? angle + 360 : angle); //obtain the degrees
-
-    console.log(degrees);
 
     if(0 <= degrees && degrees <= 44){
       console.log("Dead ")
