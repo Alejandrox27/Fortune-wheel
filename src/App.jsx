@@ -1,6 +1,5 @@
 import wheel from "./imgs/wheel.png";
 import arrow from "./imgs/arrow.png";
-import coin_img from "./imgs/coin.png";
 import ticket_img from "./imgs/ticket.png";
 
 import Swal from "sweetalert2";
@@ -8,6 +7,9 @@ import Swal from "sweetalert2";
 import "./App.css";
 import "./reset.css";
 import { useRef, useState, useEffect } from "react";
+
+import { Coin } from "./components/Coin";
+import { LooseMessage } from "./components/LooseMessage";
 
 function App(){
   const barRef = useRef(null);
@@ -35,7 +37,7 @@ function App(){
   , [])
 
   for (let i = 0; i<coins; i++){
-    coins_list.push(<img key={i} src={coin_img} alt="Coin" className="object coin" />)
+    coins_list.push(<Coin key={i} />)
   }
 
   const stop = () => {
@@ -104,7 +106,6 @@ function App(){
   const restartGame = () => {
     setCoins(1);
     setTicket(1);
-    setFinishText(null);
   }
   
 
@@ -144,8 +145,7 @@ function App(){
       {
         ticket === -1 ? 
         <>
-        <h3 className="finish-text">You lost, but you won {coins} coin/s</h3>
-        <button className="button" onClick={restartGame}>Restart</button>
+        <LooseMessage coins={coins} restartGame={restartGame} />
         </>
          :
         <>
