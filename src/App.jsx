@@ -10,6 +10,7 @@ import { useRef, useState, useEffect } from "react";
 
 import { Coin } from "./components/Coin";
 import { LooseMessage } from "./components/LooseMessage";
+import { Body } from "./components/Body";
 
 function App(){
   const barRef = useRef(null);
@@ -37,10 +38,12 @@ function App(){
   , [])
 
   for (let i = 0; i<coins; i++){
+    // Add a "Coin" for every coins.
     coins_list.push(<Coin key={i} />)
   }
 
   const stop = () => {
+    // Add login when click launch button to stop bar and rotate wheel.
     barRef.current.classList.add("stop");
     setPower(power + barRef.current.offsetWidth * 20);
     setTicket(0);
@@ -48,6 +51,8 @@ function App(){
   }
 
   const continueWheel = () => {
+    // Add the logic for every case in the Wheel
+
     barRef.current.classList.remove("stop")
     buttonRef.current.removeAttribute("disabled", !buttonRef.current.disabled)
     const style = window.getComputedStyle(wheelRef.current);
@@ -149,16 +154,7 @@ function App(){
         </>
          :
         <>
-          <div className="launch-text">
-            <p>Click on "launch"</p>
-          </div>
-          <div className="launch-container">
-            <div className="launch-bar animation-bar"
-            ref={ barRef }></div>
-          </div>
-          <div>
-            <button onClick={stop} ref={buttonRef} className="button">Launch</button>
-          </div>
+        <Body barRef={barRef} stop={stop} buttonRef={buttonRef} />
         </>
          
       }
