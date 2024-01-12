@@ -4,8 +4,12 @@ import ticket_img from "./imgs/ticket.png";
 
 import Swal from "sweetalert2";
 
-import "./App.css";
 import "./reset.css";
+import "./App.css";
+import "./phone_size.css"
+import "./animation.css"
+import "./message.css"
+
 import { useRef, useState, useEffect } from "react";
 
 import { Coin } from "./components/Coin";

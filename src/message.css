@@ -1,0 +1,16 @@
+.swal2-title {
+font-family: 'Rubik', sans-serif;
+font-size: 40px !important;
+color: rgb(245, 242, 90) !important;
+}
+
+.swal2-html-container{
+font-family: 'Rubik', sans-serif;
+font-size: 20px !important;
+color: rgb(224, 224, 224) !important;
+}
+
+
+.swal2-confirm {
+background-color: orange !important;
+}

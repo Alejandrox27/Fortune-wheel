@@ -1,0 +1,20 @@
+.animation-bar{
+    animation: animation-bar .8s infinite ease-in-out;
+    animation-play-state: running;
+}
+
+.stop{
+    animation-play-state: paused;
+}
+
+@keyframes animation-bar {
+0%{
+    width: 10px;
+}
+50%{
+    width: var(--len-bar);
+}
+100%{
+    width: 10px;
+}
+}

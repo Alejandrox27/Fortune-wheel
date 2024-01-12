@@ -1,0 +1,66 @@
+@media (max-width: 550px) {
+    .wheel{
+      width: 200px;
+    }
+  
+    .arrow{
+      width: 50px;
+    }
+  
+    .object{
+      width: 22px;
+      height: 22px;
+    }
+  
+    .object-text{
+      font-size: 13px;
+    }
+  
+    .objects{
+      padding: 0px;
+    }
+  
+    .button{
+      padding: 5px 15px;
+    }
+  
+    .launch-text{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 300px) {
+    .wheel{
+      width: 150px;
+    }
+  
+    .arrow{
+      width: 35px;
+    }
+  
+    .object{
+      width: 22px;
+      height: 22px;
+    }
+  
+    .coins-list{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .finish-text{
+      font-size: 17px;
+    }
+  
+    .launch-container{
+      width: 220px;
+      height: 25px;
+    }
+  
+    .launch-bar{
+      height: 15px;
+    }
+  
+    :root{
+      --len-bar: 210px;
+    }
+  }
