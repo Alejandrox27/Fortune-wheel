@@ -3,10 +3,11 @@ import arrow from "./imgs/arrow.png";
 import coin_img from "./imgs/coin.png";
 import ticket_img from "./imgs/ticket.png";
 
-import "./App.css"
-import "./reset.css"
-import { useRef } from "react"
-import { useState } from "react"
+import Swal from "sweetalert2";
+
+import "./App.css";
+import "./reset.css";
+import { useRef, useState, useEffect } from "react";
 
 function App(){
   const barRef = useRef(null);
@@ -19,6 +20,20 @@ function App(){
   const [ticket, setTicket] = useState(1);
 
   const coins_list = [];
+
+  useEffect(() => {
+    Swal.fire({
+      title: "How to play?",
+      html: `
+      - the white spaces will multiply your winnings but you will not be able to continue playing.<br><br>
+      - The colored spaces will add up to your winnings and you will not stop playing.<br><br>
+      - The Dead spaces will make you loose.
+  `,
+  background: "#0f0f0f"
+    })
+  }    
+  , [])
+
   for (let i = 0; i<coins; i++){
     coins_list.push(<img key={i} src={coin_img} alt="Coin" className="object coin" />)
   }

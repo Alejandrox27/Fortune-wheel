@@ -42,6 +42,7 @@
 
 .coins{
   margin-left: 20px;
+  color: #fff;
 }
 
 .coins-list{
@@ -51,6 +52,7 @@
 
 .tickets{
   margin-right: 20px;
+  color: #fff;
 }
 
 .coin{
@@ -77,8 +79,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #607274;
-  color: #FFF;
+  background-color: rgb(245, 242, 90);
+  color: #000;
   padding: 9px 50px;
   margin-top: 10px;
   font-size: 20px;
@@ -109,11 +111,11 @@
 
 .button{
   margin-top: 20px;
-  background-color: #607274;
+  background-color: orange;
   border: none;
   padding: 10px 20px;
   font-size: 20px;
-  border: 2px solid #607274;
+  border: 2px solid orange;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 700;
@@ -123,21 +125,22 @@
 }
 
 .button:hover{
-  color: #607274;
+  color: orange;
   background: none;
-  border-color:#607274;
+  border-color: orange;
 }
 
 .button[disabled] {
-  background-color: #484949;
-  color: #1b1c1d;
-  border-color: #454646;
+  background-color: #553d09;
+  color: #555555;
+  border-color: #553d09;
 }
 
 .finish-text{
   margin-top: 30px;
   font-size: 20px;
   font-weight: 400;
+  color: #fff;
 }
 
 .animation-bar{
@@ -147,6 +150,23 @@
 
 .stop{
   animation-play-state: paused;
+}
+
+.swal2-title {
+  font-family: 'Rubik', sans-serif;
+  font-size: 40px !important;
+  color: rgb(245, 242, 90) !important;
+}
+
+.swal2-html-container{
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px !important;
+  color: rgb(224, 224, 224) !important;
+}
+
+
+.swal2-confirm {
+  background-color: orange !important;
 }
 
 @keyframes animation-bar {
